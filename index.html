@@ -16,9 +16,9 @@
   </head>
   <body>
     <main>
-      <h1 class="visibility-hidden">Tip calculator app</h1>
+      <h1 class="sr-only">Tip calculator app</h1>
 
-      <section class="tip-calculator">
+      <div class="tip-calculator">
         <img src="images/logo.svg" alt="logo" />
 
         <div class="container">
@@ -37,12 +37,18 @@
               <label>Select Tip %</label>
 
               <div class="grid-flow tip-container">
-                <input type="text" name="tip" value="5%" readonly />
-                <input type="text" name="tip" value="10%" readonly />
-                <input type="text" name="tip" value="15%" readonly />
-                <input type="text" name="tip" value="25%" readonly />
-                <input type="text" name="tip" value="50%" readonly />
-                <input class="form__input" min="1" type="number" name="custom-tip" placeholder="Custom" />
+                <label class="sr-only" for="tip-5">Tip 5 percent</label>
+                <input type="text" name="tip-5" id="tip-5" value="5%" readonly />
+                <label class="sr-only" for="tip-10">Tip 10 percent</label>
+                <input type="text" name="tip-10" id="tip-10" value="10%" readonly />
+                <label class="sr-only" for="tip-15">Tip 15 percent</label>
+                <input type="text" name="tip-15" id="tip-15" value="15%" readonly />
+                <label class="sr-only" for="tip-25">Tip 25 percent</label>
+                <input type="text" name="tip-25" id="tip-25" value="25%" readonly />
+                <label class="sr-only" for="tip-50">Tip 50 percent</label>
+                <input type="text" name="tip-50" id="tip-50" value="50%" readonly />
+                <label class="sr-only" for="custom-tip">Custom Tip</label>
+                <input class="form__input" min="1" type="number" name="custom-tip" id="custom-tip" placeholder="Custom" />
               </div>
             </div>
 
@@ -56,13 +62,13 @@
               </div>
             </div>
 
-            <button class="visibility-hidden" type="submit">submit</button>
+            <button class="sr-only" type="submit">submit</button>
           </form>
 
           <div class="result">
             <div class="result__group">
-              <label for="tip-amount">Tip Amount <small>/ person</small></label>
-              <input class="result__input" type="text" name="tip-amount" id="tip-amount" readonly />
+              <label for="tip">Tip Amount <small>/ person</small></label>
+              <input class="result__input" type="text" name="tip" id="tip" readonly />
             </div>
 
             <div class="result__group">
@@ -73,7 +79,7 @@
             <button class="btn-reset" id="reset" disabled>Reset</button>
           </div>
         </div>
-      </section>
+      </div>
     </main>
   </body>
 </html>
