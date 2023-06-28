@@ -1,6 +1,6 @@
 @use "./variables" as *;
 
-input[name="tip"] {
+input[name^="tip-"] {
   cursor: pointer;
   text-align: center;
   color: $clr-neutral-400;
@@ -18,12 +18,16 @@ input[name="tip"] {
   }
 }
 
-button[disabled] {
-  cursor: not-allowed;
-  opacity: 0.3;
+input[name="custom-tip"]::placeholder {
+  font-size: 0.97em;
 }
 
-.visibility-hidden {
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.2;
+}
+
+.sr-only {
   width: 1px;
   height: 1px;
   margin: -1px;
