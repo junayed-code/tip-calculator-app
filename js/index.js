@@ -7,7 +7,7 @@ const tipCalculator = (function () {
   const $bill = document.getElementById("bill");
   const $numOfPeople = document.getElementById("people");
   const $tipContainer = document.querySelector(".tip-container");
-  const $tipAmount = document.getElementById("tip-amount");
+  const $tipAmount = document.getElementById("tip");
   const $tipCustom = document.querySelector("input[name='custom-tip']");
   const $totalAmount = document.getElementById("total");
   const $btnReset = document.getElementById("reset");
@@ -37,11 +37,11 @@ const tipCalculator = (function () {
   };
 
   tip.calcTipPerPerson = function (bill, tipRate, people) {
-    return +((bill * (tipRate / 100)) / people).toFixed(2);
+    return (bill * (tipRate / 100)) / people;
   };
 
   tip.calcTotalPerPerson = function (bill, tip, people) {
-    return +(bill / people + tip).toFixed(2);
+    return bill / people + tip;
   };
 
   tip.displayResultValue = function () {
@@ -51,27 +51,18 @@ const tipCalculator = (function () {
 
     const tip = this.calcTipPerPerson(bill, tipRate, people);
     const total = this.calcTotalPerPerson(bill, tip, people);
-    $tipAmount.value = tip;
-    $totalAmount.value = total;
+
+    $tipAmount.value = `$${tip.toFixed(2)}`;
+    $totalAmount.value = `$${total.toFixed(2)}`;
 
     // turn on reset button
     $btnReset.removeAttribute("disabled");
   };
 
   tip.checkValidation = function () {
-    if ($bill.value == "") {
-      $bill.setCustomValidity("This field is required");
-      return $bill.checkValidity();
-    }
-
     if ($bill.value < 1) {
       $bill.setCustomValidity("Can't be zero");
       return $bill.checkValidity();
-    }
-
-    if ($numOfPeople.value == "") {
-      $numOfPeople.setCustomValidity("This field is required");
-      return $numOfPeople.checkValidity();
     }
 
     if ($numOfPeople.value < 1) {
@@ -98,39 +89,33 @@ const tipCalculator = (function () {
 
   // tip select function
   tip.selectTip = function (e) {
-    if (e.target.name === "tip") {
-      this.unselectTip();
+    if (/^tip-/.test(e.target.name)) {
+      this.unselectTip(e.target);
       $tipCustom.value &&= "";
-      e.target.classList.add("select");
+      e.target.classList.toggle("select");
     }
   };
 
   // unselect selected tip function
-  tip.unselectTip = function () {
-    $tipContainer.querySelector(".select")?.classList.remove("select");
+  tip.unselectTip = function (target) {
+    const tipElement = $tipContainer.querySelector(".select");
+    if (target === tipElement) return;
+
+    tipElement?.classList.remove("select");
   };
 
   tip.inputCustomTip = function (e) {
     const customTip = +e.target.value;
     if (customTip) {
       this.unselectTip();
-      return;
     }
-    this.defaultTipSelect();
   };
 
   tip.getTipRate = function () {
-    let tip;
-    tip = $tipContainer.querySelector(".select")?.value;
-    if (!tip) tip = $tipCustom.value;
+    let tip = $tipContainer.querySelector(".select")?.value;
+    tip ||= $tipCustom.value || 0;
 
     return parseInt(tip);
-  };
-
-  tip.defaultTipSelect = function () {
-    this.unselectTip();
-    $tipContainer.querySelector("input").classList.add("select");
-    $tipCustom.value = "";
   };
 
   tip.reset = function () {
@@ -138,7 +123,6 @@ const tipCalculator = (function () {
     $numOfPeople.value = "";
     $tipAmount.value = "$0.00";
     $totalAmount.value = "$0.00";
-    this.defaultTipSelect();
     $btnReset.setAttribute("disabled", "");
   };
 
