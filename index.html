@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+    <title>Tip calculator app</title>
+
+    <!-- link stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- link JavaScript -->
+    <script src="js/index.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1 class="visibility-hidden">Tip calculator app</h1>
+
+      <section class="tip-calculator">
+        <img src="images/logo.svg" alt="logo" />
+
+        <div class="container">
+          <form class="form" novalidate>
+            <div class="form__group">
+              <div class="form__label">
+                <label for="bill">Bill</label>
+                <samp class="error-message"></samp>
+              </div>
+              <div class="input--bill">
+                <input class="form__input" min="1" type="number" name="bill" id="bill" placeholder="0" />
+              </div>
+            </div>
+
+            <div class="form__group">
+              <label>Select Tip %</label>
+
+              <div class="grid-flow tip-container">
+                <input type="text" name="tip" value="5%" readonly />
+                <input type="text" name="tip" value="10%" readonly />
+                <input type="text" name="tip" value="15%" readonly />
+                <input type="text" name="tip" value="25%" readonly />
+                <input type="text" name="tip" value="50%" readonly />
+                <input class="form__input" min="1" type="number" name="custom-tip" placeholder="Custom" />
+              </div>
+            </div>
+
+            <div class="form__group">
+              <div class="form__label">
+                <label for="people">Number of People</label>
+                <samp class="error-message"></samp>
+              </div>
+              <div class="input--people">
+                <input class="form__input" min="1" type="number" name="people" id="people" placeholder="0" />
+              </div>
+            </div>
+
+            <button class="visibility-hidden" type="submit">submit</button>
+          </form>
+
+          <div class="result">
+            <div class="result__group">
+              <label for="tip-amount">Tip Amount <small>/ person</small></label>
+              <input class="result__input" type="text" name="tip-amount" id="tip-amount" readonly />
+            </div>
+
+            <div class="result__group">
+              <label for="total">Total <small>/ person</small></label>
+              <input class="result__input" type="text" name="total" id="total" readonly />
+            </div>
+
+            <button class="btn-reset" id="reset" disabled>Reset</button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

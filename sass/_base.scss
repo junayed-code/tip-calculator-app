@@ -1,0 +1,59 @@
+@use "./variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  font-family: $ff-primary;
+}
+
+body {
+  font-size: $fs-1;
+  font-weight: $fw-bold;
+  color: $clr-neutral-800;
+  background-color: $clr-neutral-600;
+}
+
+button,
+input {
+  font: inherit;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+input {
+  width: 100%;
+  font-size: $fs-2;
+  padding: 0.105em 0.415em;
+  border: 2px solid transparent;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+svg,
+img {
+  display: block;
+  max-width: 100%;
+}
+
+small {
+  font-size: 1.35rem;
+  color: $clr-neutral-700;
+  display: block;
+}
+
+main {
+  min-height: max(84rem, 100vh);
+  display: grid;
+}

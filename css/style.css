@@ -1,0 +1,239 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap");
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+  font-family: "Space Mono", monospace;
+}
+
+body {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: hsl(186, 14%, 43%);
+  background-color: hsl(185, 41%, 84%);
+}
+
+button,
+input {
+  font: inherit;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+input {
+  width: 100%;
+  font-size: 2.4rem;
+  padding: 0.105em 0.415em;
+  border: 2px solid transparent;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type=number] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+svg,
+img {
+  display: block;
+  max-width: 100%;
+}
+
+small {
+  font-size: 1.35rem;
+  color: hsl(184, 14%, 56%);
+  display: block;
+}
+
+main {
+  min-height: max(84rem, 100vh);
+  display: grid;
+}
+
+input[name=tip] {
+  cursor: pointer;
+  text-align: center;
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(183, 100%, 15%);
+  transition: all 220ms;
+}
+input[name=tip].select {
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(172, 67%, 45%);
+}
+input[name=tip]:not(.select):hover {
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(185, 41%, 84%);
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.visibility-hidden {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border-width: 0;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.grid-flow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.input--bill, .input--people {
+  position: relative;
+}
+.input--bill input, .input--people input {
+  padding-left: 3rem;
+}
+.input--bill::before, .input--people::before {
+  content: "";
+  width: 1.15rem;
+  height: 1.7rem;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 1.375rem;
+  transform: translateY(-50%);
+}
+.input--bill::before {
+  background-image: url("../images/icon-dollar.svg");
+}
+.input--people::before {
+  background-image: url("../images/icon-person.svg");
+}
+
+.error-message {
+  visibility: hidden;
+  color: hsl(0, 100%, 67%);
+  font-size: 0.85em;
+}
+
+.container {
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border-radius: 2rem 2rem 0 0;
+  background-color: hsl(0, 0%, 100%);
+  display: grid;
+  row-gap: 2.45rem;
+}
+
+.btn-reset {
+  cursor: pointer;
+  margin-top: auto;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(172, 67%, 45%);
+  transition: background-color 220ms;
+}
+.btn-reset:not(:disabled):hover {
+  background-color: hsl(185, 41%, 84%);
+}
+
+.tip-calculator {
+  width: min(78rem, 100%);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.form {
+  padding: 0.75rem;
+}
+.form__input {
+  text-align: right;
+  color: hsl(183, 100%, 15%);
+  background-color: hsl(189, 41%, 97%);
+}
+.form__input:focus {
+  border: 2px solid hsl(172, 67%, 45%);
+}
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.form__group:not(:last-of-type) {
+  margin-bottom: 2.65rem;
+}
+.form__group--error .form__input {
+  border-color: hsl(0, 100%, 67%);
+}
+.form__group--error .error-message {
+  visibility: visible;
+}
+.form__label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.result {
+  padding: 2.15rem;
+  border-radius: 1.25rem;
+  background-color: hsl(183, 100%, 15%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.result__group {
+  color: hsl(0, 0%, 100%);
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 58%;
+  gap: 1rem;
+}
+.result__input {
+  font-size: 3.45rem;
+  text-align: right;
+  padding: 0.05em;
+  color: hsl(172, 67%, 45%);
+  background-color: transparent;
+}
+
+@media screen and (min-width: 48em) {
+  main {
+    min-height: 100vh;
+    place-items: center;
+  }
+  .tip-calculator {
+    margin: 0;
+    gap: 5rem;
+  }
+  .container {
+    padding: 2rem 2rem 2rem 0;
+    border-radius: 2rem;
+    grid-template-columns: 1fr 32.5rem;
+  }
+  .result {
+    padding: 3.25rem;
+  }
+  .form {
+    padding: 1rem 3.5rem;
+  }
+  .grid-flow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

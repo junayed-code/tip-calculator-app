@@ -1,0 +1,108 @@
+@use "./variables" as *;
+@forward "./base";
+@forward "./typhography";
+
+.tip-calculator {
+  width: min(78rem, 100%);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+
+.form {
+  padding: 0.75rem;
+
+  &__input {
+    text-align: right;
+    color: $clr-neutral-900;
+    background-color: $clr-neutral-500;
+
+    &:focus {
+      border: 2px solid $clr-primary-400;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    &:not(:last-of-type) {
+      margin-bottom: 2.65rem;
+    }
+
+    &--error {
+      .form__input {
+        border-color: $clr-light-red;
+      }
+
+      .error-message {
+        visibility: visible;
+      }
+    }
+  }
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .35rem;
+  }
+}
+
+.result {
+  padding: 2.15rem;
+  border-radius: 1.25rem;
+  background-color: $clr-neutral-900;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__group {
+    color: $clr-neutral-400;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 58%;
+    gap: 1rem;
+  }
+
+  &__input {
+    font-size: $fs-3;
+    text-align: right;
+    padding: 0.05em;
+    color: $clr-primary-400;
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  main {
+    min-height: 100vh;
+    place-items: center;
+  }
+
+  .tip-calculator {
+    margin: 0;
+    gap: 5rem;
+  }
+
+  .container {
+    padding: 2rem 2rem 2rem 0;
+    border-radius: 2rem;
+    grid-template-columns: 1fr 32.5rem;
+  }
+
+  .result {
+    padding: 3.25rem;
+  }
+
+  .form {
+    padding: 1rem 3.5rem;
+  }
+
+  .grid-flow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

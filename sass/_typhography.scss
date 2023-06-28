@@ -1,0 +1,103 @@
+@use "./variables" as *;
+
+input[name="tip"] {
+  cursor: pointer;
+  text-align: center;
+  color: $clr-neutral-400;
+  background-color: $clr-neutral-900;
+  transition: all 220ms;
+
+  &.select {
+    color: $clr-neutral-900;
+    background-color: $clr-primary-400;
+  }
+
+  &:not(.select):hover {
+    color: $clr-neutral-900;
+    background-color: $clr-neutral-600;
+  }
+}
+
+button[disabled] {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.visibility-hidden {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border-width: 0;
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.grid-flow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.input {
+  &--bill,
+  &--people {
+    position: relative;
+
+    input {
+      padding-left: 3rem;
+    }
+
+    &::before {
+      content: "";
+      width: 1.15rem;
+      height: 1.7rem;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+
+      position: absolute;
+      top: 50%;
+      left: 1.375rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  &--bill::before {
+    background-image: url("../images/icon-dollar.svg");
+  }
+
+  &--people::before {
+    background-image: url("../images/icon-person.svg");
+  }
+}
+
+.error-message {
+  visibility: hidden;
+  color: $clr-light-red;
+  font-size: .85em;
+}
+
+.container {
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border-radius: 2rem 2rem 0 0;
+  background-color: $clr-neutral-400;
+  display: grid;
+  row-gap: 2.45rem;
+}
+
+.btn-reset {
+  cursor: pointer;
+  margin-top: auto;
+  padding: 0.5em 1em;
+  text-transform: uppercase;
+  color: $clr-neutral-900;
+  background-color: $clr-primary-400;
+  transition: background-color 220ms;
+
+  &:not(:disabled):hover {
+    background-color: $clr-neutral-600;
+  }
+}
